@@ -1,3 +1,20 @@
 body {
     background-color: aqua;
+    text-align: center;
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.player-image {
+    width: 6rem;
+}
+
+.player-card {
+    border: 5px double black;
+    border-radius: 1rem;
 }
