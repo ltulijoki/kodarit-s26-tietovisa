@@ -14,7 +14,27 @@ header {
     width: 6rem;
 }
 
-.player-card {
+.player-card, .turn-panel {
     border: 5px double black;
     border-radius: 1rem;
+    background-color: bisque;
+    color: black;
+}
+
+.dice {
+    width: 5rem;
+    height: 5rem;
+    background-color: black;
+    color: white;
+    display: grid;
+    place-items: center;
+    margin: 0.8rem auto;
+    border-radius: 1rem;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.game-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
