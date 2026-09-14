@@ -19,6 +19,7 @@ header {
     border-radius: 1rem;
     background-color: bisque;
     color: black;
+    padding: 1rem;
 }
 
 .dice {
@@ -38,3 +39,31 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 70px);
+    gap: 0.45rem;
+    padding: 0.75rem;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+}
+
+.space {
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 0.75rem;
+    padding: 0.35rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+[data-category="maantieto"] { background: #205ea5; }
+[data-category="yleistieto"] { background: #d70d7c; }
+[data-category="historia"] { background: #e9a908; }
+[data-category="taide ja kulttuuri"] { background: #753ca9; }
+[data-category="tiede"] { background: #039e3c; }
+[data-category="urheilu"] { background: #eb700a; }
