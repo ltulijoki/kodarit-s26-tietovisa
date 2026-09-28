@@ -13,6 +13,18 @@ const CATEGORIES = [
 const createBoard = () => {
   boardElement.innerHTML = ''
   const coordinates = createBoardCoordinates()
+  for (let index = 0; index < BOARD_SIZE; index++) {
+    const category = CATEGORIES[index % CATEGORIES.length]
+    const coordinate = coordinates[index]
+    const space = document.createElement('div')
+    space.className = 'space'
+    space.dataset.spaceIndex = index
+    space.style.gridColumn = coordinate.column
+    space.style.gridRow = coordinate.row
+    space.dataset.category = category.id
+    space.textContent = category.name
+    boardElement.append(space)
+  }
 }
 
 const createBoardCoordinates = () => {
@@ -25,7 +37,7 @@ const createBoardCoordinates = () => {
     coordinates.push({ row: 4, column })
   for (let row = 3; row >= 2; row--)
     coordinates.push({ row, column: 1 })
-  console.log(coordinates)
+  return coordinates
 }
 
 createBoard()
