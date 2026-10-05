@@ -1,5 +1,6 @@
 const BOARD_SIZE = 18
 const boardElement = document.getElementById('board')
+const diceElement = document.getElementById('dice')
 
 const CATEGORIES = [
   { id: 'maantieto', name: 'Maantieto' },
@@ -39,5 +40,12 @@ const createBoardCoordinates = () => {
     coordinates.push({ row, column: 1 })
   return coordinates
 }
+
+const rollDice = () => {
+  const result = Math.floor(Math.random() * 6) + 1
+  diceElement.textContent = result
+}
+
+dice.addEventListener("click", rollDice)
 
 createBoard()

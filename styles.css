@@ -67,3 +67,14 @@ header {
 [data-category="taide ja kulttuuri"] { background: #753ca9; }
 [data-category="tiede"] { background: #039e3c; }
 [data-category="urheilu"] { background: #eb700a; }
+
+.token {
+    width: 2rem;
+    height: 2rem;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.3rem;
+    border: solid black;
+}
