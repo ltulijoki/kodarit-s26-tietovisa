@@ -11,6 +11,13 @@ const CATEGORIES = [
   { id: 'urheilu', name: 'Urheilu' }
 ]
 
+const gameState = {
+  player: {
+    name: 'Pelaaja',
+    position: 0
+  }
+}
+
 const createBoard = () => {
   boardElement.innerHTML = ''
   const coordinates = createBoardCoordinates()
@@ -44,8 +51,29 @@ const createBoardCoordinates = () => {
 const rollDice = () => {
   const result = Math.floor(Math.random() * 6) + 1
   diceElement.textContent = result
+  movePlayer(result)
+}
+
+const updateTokens = () => {
+  document.querySelectorAll('.token').forEach(token => token.remove())
+  const currentSpace = document.querySelector(`[data-space-index="${gameState.player.position}"]`)
+  const token = document.createElement('span')
+  token.className = 'token'
+  token.textContent = 'P'
+  currentSpace.appendChild(token)
+}
+
+const movePlayer = steps => {
+  const player = gameState.player
+  player.position = (player.position + steps) % BOARD_SIZE
+  updateTokens()
+}
+
+const getCategoryAtPosition = position => {
+  
 }
 
 dice.addEventListener("click", rollDice)
 
 createBoard()
+updateTokens()
