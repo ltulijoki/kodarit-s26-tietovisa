@@ -79,3 +79,42 @@ header {
     bottom: 0.3rem;
     border: solid black;
 }
+
+.category-collection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+}
+
+.category-chip {
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 0.35rem 0.6rem;
+    opacity: 0.5;
+}
+
+.collected {
+    opacity: 1;
+}
+
+.answers {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+.answer-button {
+    padding: 0.8rem;
+    text-align: left;
+    border: 2px solid black;
+    border-radius: 1rem;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.answer-button:hover {
+    background-color: aqua;
+    color: black;
+}
