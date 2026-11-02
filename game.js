@@ -1,6 +1,7 @@
 const BOARD_SIZE = 18
 const boardElement = document.getElementById('board')
 const diceElement = document.getElementById('dice')
+const playerCategories = document.getElementById('player-categories')
 
 const CATEGORIES = [
   { id: 'maantieto', name: 'Maantieto' },
@@ -67,13 +68,24 @@ const movePlayer = steps => {
   const player = gameState.player
   player.position = (player.position + steps) % BOARD_SIZE
   updateTokens()
+  const category = getCategoryAtPosition(player.position)
 }
 
-const getCategoryAtPosition = position => {
-  
+const getCategoryAtPosition = position => CATEGORIES[position % CATEGORIES.length]
+
+const updatePlayerCard = () => {
+  playerCategories.innerHTML = ''
+  CATEGORIES.forEach(category => {
+    const chip = document.createElement('span')
+    chip.className = 'category-chip'
+    chip.dataset.category = category.id
+    chip.textContent = category.name
+    playerCategories.append(chip)
+  })
 }
 
 dice.addEventListener("click", rollDice)
 
 createBoard()
 updateTokens()
+updatePlayerCard()
