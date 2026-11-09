@@ -3,6 +3,8 @@ const boardElement = document.getElementById('board')
 const diceElement = document.getElementById('dice')
 const playerCategories = document.getElementById('player-categories')
 
+const API_URL = 'https://oma-trivia-api-0f8ffa1eed2e.herokuapp.com/api/questions'
+
 const CATEGORIES = [
   { id: 'maantieto', name: 'Maantieto' },
   { id: 'yleistieto', name: 'Yleistieto' },
@@ -64,11 +66,18 @@ const updateTokens = () => {
   currentSpace.appendChild(token)
 }
 
-const movePlayer = steps => {
+const movePlayer = async steps => {
   const player = gameState.player
   player.position = (player.position + steps) % BOARD_SIZE
   updateTokens()
   const category = getCategoryAtPosition(player.position)
+
+  try {
+    const question = await fetchQuestion(category.id)
+    console.log(question)
+  } catch (error) {
+    console.log('Tapahtui virhe')
+  }
 }
 
 const getCategoryAtPosition = position => CATEGORIES[position % CATEGORIES.length]
@@ -82,6 +91,26 @@ const updatePlayerCard = () => {
     chip.textContent = category.name
     playerCategories.append(chip)
   })
+}
+
+const fetchQuestion = async category => {
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      category,
+      difficulty: 'helppo',
+      ageGroup: '10-12',
+      count: 1,
+      language: 'suomi'
+    })
+  })
+  console.log(response)
+  console.log(response.status)
+  const data = await response.json()
+  return data.questions[0]
 }
 
 dice.addEventListener("click", rollDice)
