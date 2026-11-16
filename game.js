@@ -2,6 +2,11 @@ const BOARD_SIZE = 18
 const boardElement = document.getElementById('board')
 const diceElement = document.getElementById('dice')
 const playerCategories = document.getElementById('player-categories')
+const questionPanel = document.getElementById('question-panel')
+const questionCategory = document.getElementById('question-category')
+const questionText = document.getElementById('question-text')
+const answersElement = document.getElementById('answers')
+const feedbackElement = document.getElementById('feedback')
 
 const API_URL = 'https://oma-trivia-api-0f8ffa1eed2e.herokuapp.com/api/questions'
 
@@ -74,7 +79,7 @@ const movePlayer = async steps => {
 
   try {
     const question = await fetchQuestion(category.id)
-    console.log(question)
+    showQuestion(question, category)
   } catch (error) {
     console.log('Tapahtui virhe')
   }
@@ -107,10 +112,14 @@ const fetchQuestion = async category => {
       language: 'suomi'
     })
   })
-  console.log(response)
-  console.log(response.status)
   const data = await response.json()
   return data.questions[0]
+}
+
+const showQuestion = (question, category) => {
+  questionPanel.hidden = false
+  questionCategory.textContent = category.name
+  questionText.textContent = question.question
 }
 
 dice.addEventListener("click", rollDice)

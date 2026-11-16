@@ -18,15 +18,16 @@
                 <img class="player-image" src="pelaaja.png">
                 <p>Kerätyt aihealueet 0/6</p>
                 <div id="player-categories" class="category-collection"></div>
-                <section class="question-panel">
-                    <h2>Aihealue</h2>
-                    <h2>Kysymys</h2>
-                    <div class="answers">
+                <section id="question-panel" class="question-panel" hidden>
+                    <h2 id="question-category">Aihealue</h2>
+                    <h2 id="question-text">Kysymys</h2>
+                    <div id="answers" class="answers">
                         <button class="answer-button">Vastausvaihtoehto 1</button>
                         <button class="answer-button">Vastausvaihtoehto 2</button>
                         <button class="answer-button">Vastausvaihtoehto 3</button>
                         <button class="answer-button">Vastausvaihtoehto 4</button>
                     </div>
+                    <p id="feedback"></p>
                 </section>
             </article>
             <section class="turn-panel">
